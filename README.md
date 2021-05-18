@@ -1,23 +1,24 @@
 # Starve-Free-Readers-Writers-Problem Solution by Ritick Goenka(1711058)
 
-Problem Statement
+# Problem Statement
 
 There are multiple readers and writers of a particular variable , several readers can read the value of the variable but only a single writer is a present updating the value at a time and no readers can be present when the writer is updating the value, the solution should also avoid the starvation of reader and writers. An example is also run at the end of the this readme
 
-Semaphores
+# Semaphores used
 When there exists a requirement of mutual exculsion because of the presence of critical section, a semaphore can be used. It can help us to mantain mutual exclusion by using wait and signal mechanism, in this program we will use 3 binary semaphore.
 
 "cnt_sem" is a semaphore to ensure mutual exclusion when reader_cnt value is updated by different readers
 "in" represents that the library is not empty that is someone is inside it is also used to prevent stravation of writers and give equal priority to both readers and writers
 "reader_Writer_Sem" this semaphore ensures that no writer can enter when any reader or writer is already reading/updating the value
 
-Other variables
+# Other used variables
 
 reader_cnt - to maintain the readers currently reading the variable, mutual exclusion of this variable is ensured by cnt_sem
 reader_writer_variable- this is the shared variable between reader and writer its value is increased by 10 (just as an example) when the writer updates it
 
 
-Sample Sequence of Readers and writers
+# Sample Sequence of Readers and writers
+```
 Reader-0 entered 
 Reader-1 entered 
 Reader-2 entered 
@@ -33,11 +34,12 @@ writer-3 entered
 Reader-8 entered 
 writer-4 entered 
 Reader-9 entered 
+```
 
 
-Sample Output
+# Sample Output for above example
 
-
+```
 Reader-0 entered and reader count updated 
 Reader-1 entered and reader count updated 
 Reader-1 is reading shared variable : 1
@@ -83,6 +85,7 @@ writer-4 exited
 Reader-9 entered and reader count updated 
 Reader-9 is reading shared variable : 51
 Reader-9 exited and reader count updated 
+```
 
-
+# Conclusion
 From the output we can see that the neither writer nor the reader is getting any priority and hence the code is stravation free
